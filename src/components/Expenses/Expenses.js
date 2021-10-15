@@ -1,11 +1,11 @@
 import "./Expenses.css"
 import Card from "../UI/Card"
 import ExpanseItem from "./ExpenseItem"
-import ExpenseFilter from "./ExpenseFilter"
+import ExpensesFilter from "./ExpensesFilter"
 import { useState } from "react"
 
 const Expenses = ({ expenses }) => {
-  const [year, setYear] = useState("")
+  const [year, setYear] = useState("2020")
 
   const filterChangeHandler = (yearFilter) => {
     console.log("from Expenses.js")
@@ -14,9 +14,8 @@ const Expenses = ({ expenses }) => {
 
   return (
     <div>
-      {year}
-      <ExpenseFilter onFilterChange={filterChangeHandler} />
       <Card className='expenses'>
+        <ExpensesFilter selected={year} onFilterChange={filterChangeHandler} />
         <ExpanseItem
           date={expenses[0].date}
           title={expenses[0].title}
